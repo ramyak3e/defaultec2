@@ -41,20 +41,16 @@ terraform {
 	}
 	
 	 tags = {
-    Name = "allow_ssh"
-  }
-}
-	
-	
-	
-	
+	    Name = "allow_ssh"
+	  }
+	}
 	resource "aws_instance" "aws_ins_web" {
 	
 	ami = "ami-0f5ee92e2d63afc18"
 	instance_type = "t2.micro"
 	vpc_security_group_ids = [aws_security_group.aws_sg.id]
 	associate_public_ip_address = true
-user_data              = base64encode(file("userdata.sh"))
+	user_data  = base64encode(file("userdata.sh"))
 	
 	tags = {
 	Name = "my instance"
